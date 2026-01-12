@@ -8,9 +8,12 @@ console.log("JWT_SECRET:", process.env.JWT_SECRET);
 const app = express();
 
 // Middleware
-app.use(express.json());
+appapp.use(cors({
+  origin: "https://todo-app-1t27.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
-app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
