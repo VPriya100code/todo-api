@@ -8,7 +8,7 @@ console.log("JWT_SECRET:", process.env.JWT_SECRET);
 const app = express();
 
 // Middleware
-appapp.use(cors({
+app.use(cors({
   origin: "https://todo-app-1t27.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
