@@ -19,34 +19,36 @@ const handleRegister = async (e) => {
   }
 };
 
-  return (
-    <div className="auth-container">
-      <form className="auth-card" onSubmit={handleRegister}>
-        <h2>Register</h2>
+ return (
+  <div className="auth-container">
+    <form className="auth-card" onSubmit={handleLogin}>
+      <h2>Login</h2>
 
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
-        <button type="submit">Register</button>
+      <button type="submit">Login</button>
 
-        <p>
-          Already registered? <Link to="/">Login</Link>
-        </p>
-      </form>
-    </div>
-  );
+      <p>
+        New user? <Link to="/register">Register</Link>
+      </p>
+    </form>
+  </div>
+);
+
 }
 
 export default Register;
