@@ -6,16 +6,38 @@ import ImageUpload from "./pages/ImageUpload";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const isAuth = localStorage.getItem("token");
+  const isAuth = !!localStorage.getItem("token");
 
   return (
     <BrowserRouter>
-      {isAuth && <Navbar />}
+      <Navbar />
+
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/todo" element={isAuth ? <Todo /> : <Navigate to="/" />} />
-        <Route path="/upload" element={isAuth ? <ImageUpload /> : <Navigate to="/" />} />
+        {/* Public routes */}
+        <Route
+          path="/login"
+          element={!isAuth ? <Login /> : <Navigate to="/todo" />}
+        />
+        <Route
+          path="/register"
+          element={!isAuth ? <Register /> : <Navigate to="/todo" />}
+        />
+
+        {/* Protected routes */}
+        <Route
+          path="/todo"
+          element={isAuth ? <Todo /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/upload"
+          element={isAuth ? <ImageUpload /> : <Navigate to="/login" />}
+        />
+
+        {/* Default */}
+        <Route
+          path="*"
+          element={<Navigate to={isAuth ? "/todo" : "/login"} />}
+        />
       </Routes>
     </BrowserRouter>
   );
