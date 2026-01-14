@@ -7,15 +7,21 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const res = await API.post("/auth/login", { email, password });
-      localStorage.setItem("token", res.data.token);
-      navigate("/todo");
-    } catch (err) {
-      alert("Invalid credentials");
-    }
-  };
+const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await API.post("/api/auth/login", {
+      email,
+      password
+    });
+
+    localStorage.setItem("token", res.data.token);
+    navigate("/tasks"); // or home page
+  } catch (err) {
+    alert(err.response?.data?.message || "Login failed");
+  }
+};
+
 
   return (
     <div className="auth-wrapper">
