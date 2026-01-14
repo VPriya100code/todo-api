@@ -21,7 +21,7 @@ const handleRegister = async (e) => {
 
  return (
   <div className="auth-container">
-    <form className="auth-card" onSubmit={handleLogin}>
+    <form className="auth-card" onSubmit={handleRegister}>
       <h2>Login</h2>
 
       <input
