@@ -8,11 +8,16 @@ function Register() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    await API.post("/auth/register", { email, password });
+const handleRegister = async (e) => {
+  e.preventDefault();
+  try {
+    await API.post("/api/auth/register", { email, password });
+    alert("Registered successfully");
     navigate("/");
-  };
+  } catch (err) {
+    alert(err.response?.data?.message || "Register failed");
+  }
+};
 
   return (
     <div className="auth-container">
