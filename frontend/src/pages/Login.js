@@ -16,7 +16,7 @@ function Login() {
       });
 
       localStorage.setItem("token", res.data.token);
-      navigate("/");
+      navigate("/todo");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }
