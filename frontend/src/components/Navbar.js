@@ -18,7 +18,7 @@ const handleLogout = () => {
       <div className="nav-right">
         <Link to="/todo">To-Do</Link>
         <Link to="/upload">Image Upload</Link>
-        <button onClick={logout}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );
