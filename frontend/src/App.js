@@ -13,7 +13,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* Public routes */}
+        {/* Public */}
         <Route
           path="/login"
           element={!isAuth ? <Login /> : <Navigate to="/todo" />}
@@ -23,7 +23,7 @@ function App() {
           element={!isAuth ? <Register /> : <Navigate to="/todo" />}
         />
 
-        {/* Protected routes */}
+        {/* Protected */}
         <Route
           path="/todo"
           element={isAuth ? <Todo /> : <Navigate to="/login" />}
