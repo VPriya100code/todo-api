@@ -10,10 +10,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      {isAuth && <Navbar />}
 
       <Routes>
-        {/* Public */}
         <Route
           path="/login"
           element={!isAuth ? <Login /> : <Navigate to="/todo" />}
@@ -23,7 +22,6 @@ function App() {
           element={!isAuth ? <Register /> : <Navigate to="/todo" />}
         />
 
-        {/* Protected */}
         <Route
           path="/todo"
           element={isAuth ? <Todo /> : <Navigate to="/login" />}
@@ -33,7 +31,6 @@ function App() {
           element={isAuth ? <ImageUpload /> : <Navigate to="/login" />}
         />
 
-        {/* Default */}
         <Route
           path="*"
           element={<Navigate to={isAuth ? "/todo" : "/login"} />}
